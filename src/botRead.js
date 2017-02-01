@@ -36,14 +36,19 @@ function readFile(testFile, callback) {
       var movements = fileMessageArray[2];
       var attributes = { gridSizeX, gridSizeY, initialX, initialY, initialDirection, movements };
       if (gridSizeX < 0 && gridSizeY < 0) {
-        callback(error = 'Inlaved grid size', null);
+        callback(error = 'Invaid grid size', null);
       }
       else if (initialX < 0 && initialY < 0) {
-        callback(error = 'Inlaved initial position', null);
+        callback(error = 'Invaid initial position', null);
       }
+      
+      // else if(initialDirection !== 'N' || initialDirection !== 'W' || initialDirection !== 'E' ||initialDirection !== 'S' ){
+      //   callback(error = 'Invalid initial direction', null);
+      // }
       else {
+        //console.log(typeof initialDirection)
         var result = bot(attributes);
-        console.log(result.x, result.y, result.finaDirection);
+        //console.log(result.x, result.y, result.finaDirection);
         callback(null, result);
       }
 
