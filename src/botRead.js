@@ -35,6 +35,7 @@ function readFile(testFile, callback) {
       var initialDirection = fileMessageArray[1].split(' ')[2];
       var movements = fileMessageArray[2];
       var attributes = { gridSizeX, gridSizeY, initialX, initialY, initialDirection, movements };
+      
       if (gridSizeX < 0 && gridSizeY < 0) {
         callback(error = 'Invaid grid size', null);
       }
@@ -43,13 +44,14 @@ function readFile(testFile, callback) {
       }
       
       // else if(initialDirection !== 'N' || initialDirection !== 'W' || initialDirection !== 'E' ||initialDirection !== 'S' ){
+      //   console.log( initialDirection)
       //   callback(error = 'Invalid initial direction', null);
       // }
       else {
         //console.log(typeof initialDirection)
         var result = bot(attributes);
-        //console.log(result.x, result.y, result.finaDirection);
-        callback(null, result);
+        console.log(result.x, result.y, result.finaDirection);
+       callback(null, result);
       }
 
     }
